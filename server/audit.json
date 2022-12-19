@@ -1,0 +1,36 @@
+{
+    "keepSettings": {
+        "type": 2,
+        "amount": 10
+    },
+    "auditFilename": "audit.json",
+    "hashType": "md5",
+    "extension": "",
+    "files": [
+        {
+            "date": 1670583856835,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\project\\log\\access-20221209.log",
+            "hash": "d6d165e82f366fe29b7cd2f3a3c30fdd"
+        },
+        {
+            "date": 1670650745473,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\project\\log\\access-20221210.log",
+            "hash": "3d807d34a578602c57cadc0b0a95e76f"
+        },
+        {
+            "date": 1670842940044,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\project\\log\\access-20221212.log",
+            "hash": "cb30fade3a4d4c6dbcda289cf08f596f"
+        },
+        {
+            "date": 1670979482760,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\project\\log\\access-20221214.log",
+            "hash": "711fb697bc8f052095167951dece2c84"
+        },
+        {
+            "date": 1670995927748,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\server\\log\\access-20221214.log",
+            "hash": "ff0de7e63ddf3ab496e1497434bd912b"
+        }
+    ]
+}
