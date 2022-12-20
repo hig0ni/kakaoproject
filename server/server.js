@@ -73,6 +73,16 @@ app.get("/board", (req, res) => {
     });
 });
 
+app.get("/users", (req, res) => {
+    conn.execute("SELECT USERID FROM USERS", (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 app.use((err, req, res, next) => {
     console.log(err);
     res.status(500).send(err.message);

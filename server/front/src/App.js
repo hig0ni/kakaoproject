@@ -1,9 +1,9 @@
 import {Routes, Route} from 'react-router-dom'
 import React from 'react';
-import Home from './routes/home';
-import Board from './routes/board';
-import Login from './routes/login';
-import Register from './routes/register';
+import Home from './routes/Home';
+import Board from './routes/Board';
+import Login from './routes/Login';
+import Register from './routes/Register';
  
 function App() {
   return (
