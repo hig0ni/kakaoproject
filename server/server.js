@@ -15,6 +15,7 @@ var options = {
     connectString: process.env.DATABASE,
 };
 
+/*
 async function createDatabase() {
     let connection = await oracledb.getConnection(options);
 
@@ -23,6 +24,8 @@ async function createDatabase() {
     );
     console.log("Rows Insert: " + result.rowsAffected);
 }
+*/
+
 /*
 async function selectDatabase() {
     let connection = await oracledb.getConnection(options);
@@ -41,17 +44,11 @@ oracledb.getConnection(options, function (err, con) {
     } conn = con;
 });
 
-app.get('/data',(req,res)=>{
-    const data = {
-        lastname : "kim",
-        firstname : "geonhee"
-    };
-    res.json(data);
-})
-
+/*
 app.get("/create", (req, res) => {
     createDatabase();
 });
+*/
 
 app.get("/select", (req, res) => {
     conn.execute("SELECT PASSWORD FROM USERS", (err, result) => {
