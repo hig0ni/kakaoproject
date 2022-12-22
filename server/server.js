@@ -1,19 +1,35 @@
 const express = require("express");
 const app = express();
-app.set("port", process.env.PORT || 9000);
-
-const oracledb = require("oracledb");
-oracledb.initOracleClient({ libDir: "./instantclient_21_7" });
-oracledb.autoCommit = true;
+const user_inform = require('./routes/user_inform');
+app.use('/user_inform', user_inform);
 
 const dotenv = require("dotenv");
 dotenv.config();
 
-var options = {
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    connectString: process.env.DATABASE,
-};
+app.set("port", process.env.PORT || 9000);
+
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).send(err.message);
+});
+
+app.listen(app.get("port"), () => {
+    console.log("server running on PORT", app.get("port"));
+});
+
+/*
+const oracledb = require("oracledb");
+oracledb.initOracleClient({ libDir: "./instantclient_21_7" });
+oracledb.autoCommit = true;
+
+var conn
+oracledb.getConnection(options, function (err, con) {
+    if (err) {
+        console.log("접속이 실패했습니다.", err);
+        return;
+    } conn = con;
+});
+*/
 
 /*
 async function createDatabase() {
@@ -24,9 +40,7 @@ async function createDatabase() {
     );
     console.log("Rows Insert: " + result.rowsAffected);
 }
-*/
 
-/*
 async function selectDatabase() {
     let connection = await oracledb.getConnection(options);
 
@@ -35,20 +49,10 @@ async function selectDatabase() {
         );
     return result.rows[0][0]
 }
-*/
-var conn
-oracledb.getConnection(options, function (err, con) {
-    if (err) {
-        console.log("접속이 실패했습니다.", err);
-        return;
-    } conn = con;
-});
 
-/*
 app.get("/create", (req, res) => {
     createDatabase();
 });
-*/
 
 app.get("/select", (req, res) => {
     conn.execute("SELECT PASSWORD FROM USERS", (err, result) => {
@@ -79,12 +83,4 @@ app.get("/users", (req, res) => {
         }
     });
 });
-
-app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(500).send(err.message);
-});
-
-app.listen(app.get("port"), () => {
-    console.log("server running on PORT", app.get("port"));
-});
+*/
