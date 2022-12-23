@@ -23,15 +23,11 @@ function Login() {
             }
         })
         .then(res => {
-            console.log(res)
-            console.log(res.data[0])
-            console.log(res.data[1])
-            
-            if(res.data[0] === undefined){
+            if(res.data.loginStatusCode === 0){
                 // id 일치하지 않는 경우
-                alert('입력하신 id 가 일치하지 않습니다.')
-            } else if(res.data[0] === undefined){
-                alert('입력하신 비밀번호 가 일치하지 않습니다.')
+                alert('입력하신 아이디가 일치하지 않습니다.')
+            } else if(res.data.loginStatusCode === 1){
+                alert('입력하신 비밀번호가 일치하지 않습니다.')
             } else if(res.data[0] === inputId) {
                 alert('로그인 성공')
                 sessionStorage.setItem('user_id', inputId)
