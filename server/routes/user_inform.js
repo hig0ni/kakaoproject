@@ -29,7 +29,7 @@ router.post('/onLogin', (req, res) => {
             if(!err) {
                 // 결과값이 1보다 작다면(동일한 id 가 없다면)
                 if(result.rows[0][0] < 1) {
-                    res.send({ 'msg': '입력하신 id 가 일치하지 않습니다.'})
+                    res.json({loginStatusCode : 0, msg : "ID INCORRECT"});
                 } else { 
                     // 동일한 id 가 있으면 비밀번호 일치 확인
                     var sql2 = `SELECT COUNT(*) FROM USERS WHERE USERID = '${user_id}' AND PASSWORD = '${user_pw}'`;
@@ -37,7 +37,7 @@ router.post('/onLogin', (req, res) => {
                         if(!err){
                             if(result.rows[0][0] < 1) {
                                 //console.log("입력하신 비밀번호가 일치하지 않습니다.")
-                                res.send({ 'msg': '입력하신 pw 가 일치하지 않습니다.'})
+                                res.json({loginStatusCode : 1, msg : "PW INCORRECT"});
                              } else {
                                 //console.log("로그인 성공.");
                                 var sql3 = `SELECT USERID, PASSWORD FROM USERS WHERE USERID = '${user_id}' AND PASSWORD = '${user_pw}'`;
