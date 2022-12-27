@@ -1,12 +1,9 @@
 const express = require("express");
 const app = express();
-const user_inform = require('./routes/user_inform');
-app.use('/user_inform', user_inform);
+const user_inform = require("./routes/user_inform");
+app.use("/user_inform", user_inform);
 
-const dotenv = require("dotenv");
-dotenv.config();
-
-app.set("port", process.env.PORT || 9000);
+app.set("port", 9000);
 
 app.use((err, req, res, next) => {
     console.log(err);
