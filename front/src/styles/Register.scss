@@ -1,16 +1,22 @@
-.register {
-    margin-left: auto; 
-    margin-right: auto;
-    margin-top: 150px;
-    border: 1px solid black;
-    width: 200px;
-    height: 500px;
+
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
 }
 
-.content {
-    text-align: center;
+.form-signin .form-floating:focus-within {
+  z-index: 2;
 }
 
-.btn {
-    margin-top: 20px;
+.form-control {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.password2 {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }

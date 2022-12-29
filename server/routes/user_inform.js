@@ -76,7 +76,7 @@ router.post("/onRegister", (req, res) => {
                     connection.execute(sql5, (err, result) => {
                         if (result.rows[0][0] <= 0) {
                             // DB에 같은 이름의 닉네임이 없는 경우
-                            if(user_pw == user_pw2){
+                            if(user_pw === user_pw2){
                                 //비밀번호가 올바르게 입력된 경우
                                 sql6 = `INSERT INTO USERS VALUES('${user_id}','${user_pw}',0,'${user_Nn}',1,idIndexSeq.NEXTVAL,SYSDATE)`;
                                 connection.execute(sql6, (err, result) => {
@@ -84,7 +84,7 @@ router.post("/onRegister", (req, res) => {
                                         registerStatusCode: 1,
                                         msg: "REGISTER COMPLETE",
                                 })});
-                            }else if (user_pw != user_pw2) {
+                            }else if (user_pw !== user_pw2) {
                                 // 비밀번호가 올바르게 입력되지 않은 경우
                                 res.json({
                                     registerStatusCode: 2,
