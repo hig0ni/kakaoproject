@@ -15,9 +15,10 @@ function Main(props) {
         <div>
             <div>
                 <h2>Main 페이지</h2>
+                <div> 안녕하세요 환영합니다! </div>
             </div>
             <div>
-                <button type='button' id="btn2" onClick={onLogout}>Logout</button>
+                <button type='button' id="btn" onClick={onLogout}>Logout</button>
             </div>
         </div>
     )
