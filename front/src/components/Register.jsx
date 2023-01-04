@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { React, useState, useRef } from "react";
 import axios from "axios";
 import "../styles/Register.scss";
 
@@ -28,6 +28,7 @@ function Register() {
         setInputNn(e.target.value);
     };
 
+
     // register 버튼 클릭 이벤트
     const RegisterCheck = () => {
         //axios.post('url','body 자리', callback함수)
@@ -39,7 +40,7 @@ function Register() {
                     user_pw: inputPw,
                     user_pw2: inputPw2,
                     user_Nn: inputNn,
-                },
+                }
             })
             .then((res) => {
                 if (res.data.registerStatusCode === 0) {

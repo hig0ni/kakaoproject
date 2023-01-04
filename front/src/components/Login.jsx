@@ -37,10 +37,10 @@ function Login() {
                 } else if (res.data.loginStatusCode === 1) {
                     alert("입력하신 비밀번호가 일치하지 않습니다.");
                     document.location.href = "/login";
-                } else {
+                } else if (res.data.loginStatusCode === 2){
                     alert("로그인 성공");
                     sessionStorage.setItem("user_id", inputId);
-                    document.location.href = "/main";
+                    document.location.href = "/";
                 }
             })
             .catch();
@@ -159,7 +159,7 @@ function Login() {
                     </div>
 
                     <button
-                        class="w-100 btn btn-lg btn-primary"
+                        class="w-100 btn3 btn-lg btn-primary"
                         type="button"
                         onClick={checkAll}
                     >

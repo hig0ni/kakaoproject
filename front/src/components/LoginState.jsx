@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import Login from "./Login";
+import BeforeLogin from "./BeforeLogin";
 import Main from "./Main";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
             setIsLogin(true);
             console.log("isLogin ?? :: ", isLogin);
         }
-    });
+    },[isLogin]);
 
     return (
         <div>
@@ -24,7 +24,7 @@ function App() {
                 // Main 컴포넌트 호출 시 isLogin 이라는 props 값을 전달
                 <Main isLogin={isLogin} />
             ) : (
-                <Login />
+                <BeforeLogin />
             )}
         </div>
     );

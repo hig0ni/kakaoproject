@@ -17,20 +17,29 @@ window.addEventListener('DOMContentLoaded', event => {
         // }
         sidebarToggle.addEventListener('click', event => {
             event.preventDefault();
+            let togglebtn = document.body.querySelector('#sidebarToggle');
             document.body.classList.toggle('sb-sidenav-toggled');
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+            if (togglebtn.innerText == '메뉴 숨기기'){
+                togglebtn.innerHTML="메뉴 불러오기"
+            }else{
+                togglebtn.innerHTML="메뉴 숨기기"
+            }
         });
     }
+});
 
-    
-    const loginbtn = document.body.querySelector('#login');
-    loginbtn.addEventListener("click", e => {
-        window.location = 'http://localhost:3000/login';
-    });
+const loginbtn = document.body.querySelector('#login');
+loginbtn.addEventListener("click", e => {
+    window.location = 'http://localhost:3000/login';
+});
 
-    const registerbtn = document.body.querySelector('#register');
-    registerbtn.addEventListener("click", e => {
-        window.location = 'http://localhost:3000/register';
-    });
-    
+const registerbtn = document.body.querySelector('#register');
+registerbtn.addEventListener("click", e => {
+    window.location = 'http://localhost:3000/register';
+});
+
+const boardbtn = document.body.querySelector('#board');
+boardbtn.addEventListener("click", e => {
+    window.location = 'http://localhost:3000/board';
 });
