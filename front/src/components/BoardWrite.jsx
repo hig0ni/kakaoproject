@@ -6,8 +6,8 @@ import {useState} from 'react';
 import axios from "axios";
 
 function BoardWrite() {
-    const [inpuTitle, setinputTitle] = useState("");
-    const [inputConent, setinputContent] = useState("");
+    const [inputTitle, setinputTitle] = useState("");
+    const [inputContent, setinputContent] = useState("");
     //const [viewContent, setViewContent] = useState([]);
 
     const handleTitle = (e) => {
@@ -15,10 +15,12 @@ function BoardWrite() {
     };
 
     const submitContent = (e) => {
+        let nickname = window.sessionStorage.getItem("nickname");
         axios.post('/board_inform/onWrite', null,{
             params: {
-                title: inpuTitle,
-                content: inputConent
+                title: inputTitle,
+                content: inputContent,
+                nickname: nickname
             }
         })
         .then(()=>{
@@ -52,7 +54,7 @@ function BoardWrite() {
           />
         </div>
         <button className="submit-button"
-        /* onClick={()=>{setViewContent(viewContent.concat({...inputConent}))}}>입력</button> */
+        /* onClick={()=>{setViewContent(viewContent.concat({...inputContent}))}}>입력</button> */
         onClick={submitContent}>입력</button>
       </div>
     );

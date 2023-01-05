@@ -19,7 +19,6 @@ function Login() {
 
     // login 버튼 클릭 이벤트
     const LoginCheck = () => {
-        console.log("HellO!");
         //axios.post('url','body 자리', callback함수)
         //요청 url에서 bodyparser 설정 후 req.body로 읽을 수 있음
         axios
@@ -40,7 +39,11 @@ function Login() {
                 } else if (res.data.loginStatusCode === 2){
                     alert("로그인 성공");
                     sessionStorage.setItem("user_id", inputId);
+                    sessionStorage.setItem("nickname", res.data.nickname);
                     document.location.href = "/";
+                } else if (res.data.loginStatusCode === 2.5) {
+                    alert("닉네임을 불러올 수 없습니다.")
+                    document.location.href = "/login";        
                 }
             })
             .catch();
@@ -87,7 +90,7 @@ function Login() {
         var password1RegExp = /^[a-zA-z0-9]{2,16}$/; //비밀번호 유효성 검사
         if (!password1RegExp.test(password1)) {
             alert(
-                "비밀번호는 영문 대소문자와 숫자 2 ~ 16자리로 입력해야합니다!"
+                "비밀번호는 영문 대소문자와 숫자, 특수문자 2 ~ 16자리로 입력해야합니다!"
             );
             inputIdRef.current.value = "";
             inputPwRef.current.value = "";

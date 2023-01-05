@@ -41,7 +41,18 @@ router.post("/onLogin", (req, res) => {
                 connection.execute(sql2, async(err, result) => {
                     const check = await bcrypt.compare(user_pw, result.rows[0][0].trim()) 
                     if (check === true) {
-                            res.json({ loginStatusCode: 2, msg: "CORRECT" });
+                            var sqlGetNickname = `SELECT NICKNAME FROM USERS WHERE USERID = '${user_id}'`;
+                            connection.execute(sqlGetNickname, async(err, result) => {
+                                if (result.rows[0][0] === null || result.rows[0][0] === '')
+                                {
+                                    res.json({loginStatusCode : 2.5, msg : "CAN'T FIND NICKNAME"});
+                                }
+                                else
+                                {
+                                    res.json({ loginStatusCode: 2, msg: "CORRECT", nickname : result.rows[0][0] });
+                                }
+                            })
+                            //res.json({ loginStatusCode: 2, msg: "CORRECT" });
                         } else {
                             //아이디는 맞지만, 비밀번호가 틀렸을 때
                             res.json({ loginStatusCode: 1, msg: "PW INCORRECT" });

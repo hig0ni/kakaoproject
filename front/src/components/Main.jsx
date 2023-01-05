@@ -15,7 +15,8 @@ function Main(props) {
         <div>
             <div>
                 <h2>Main 페이지</h2>
-                <div> 안녕하세요 환영합니다! </div>
+                <div> 안녕하세요 {window.sessionStorage.getItem("nickname")} 님. <br />
+                      환영합니다! </div>
             </div>
             <div>
                 <button type='button' id="btn" onClick={onLogout}>Logout</button>
