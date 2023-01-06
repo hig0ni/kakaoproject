@@ -70,11 +70,11 @@ function Register() {
         if (!CheckNickname(inputNn)) {
             return false;
         }
-        if (!CheckPassword(inputId, inputPw)) {
+        if (!CheckPassword(inputPw)) {
             return false;
         }
 
-        return true;
+        RegisterCheck();
     }
 
     // 공백확인 함수
@@ -113,24 +113,23 @@ function Register() {
             inputNnRef.current.value = "";
             return false;
         }
-
-        RegisterCheck(); //확인이 완료되었을 때
+        return true; //확인이 완료되었을 때
     }
 
-    function CheckPassword(id, password1) {
+    function CheckPassword(password) {
         //비밀번호가 입력되었는지 확인하기
-        if (!checkExistData(password1, "비밀번호를")) return false;
+        if (!checkExistData(password, "비밀번호를")) return false;
 
-        var password1RegExp = /^[a-zA-z0-9]{2,16}$/; //비밀번호 유효성 검사
-        if (!password1RegExp.test(password1)) {
+       // var password1RegExp = /^[a-zA-z0-9]{2,16}$/; //비밀번호 유효성 검사
+        var passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{2,16}$/; //비밀번호 유효성 검사
+        if (passwordRegExp.test(password)=== false) {
             alert("비밀번호는 영문 대소문자와 숫자 2 ~ 16자리로 입력해야합니다!");
             inputIdRef.current.value = "";
             inputPwRef.current.value = "";
             inputNnRef.current.value = "";
             return false;
         }
-
-        RegisterCheck(); //확인이 완료되었을 때
+        return true; //확인이 완료되었을 때
     }
 
     return (

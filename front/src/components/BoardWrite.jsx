@@ -8,7 +8,6 @@ import axios from "axios";
 function BoardWrite() {
     const [inputTitle, setinputTitle] = useState("");
     const [inputContent, setinputContent] = useState("");
-    //const [viewContent, setViewContent] = useState([]);
 
     const handleTitle = (e) => {
         setinputTitle(e.target.value);
@@ -41,8 +40,7 @@ function BoardWrite() {
           <input className="title-input" name='title' type='text' placeholder='제목' onChange={handleTitle}/>
           <CKEditor
             editor={ClassicEditor}
-            placeholder="내용"
-            data="Hello from CKEditor 5!"
+            data="내용을 작성해주세요."
             onReady={editor => {
               // You can store the "editor" and use when it is needed.
               console.log('Editor is ready to use!', editor);
@@ -54,7 +52,6 @@ function BoardWrite() {
           />
         </div>
         <button className="submit-button"
-        /* onClick={()=>{setViewContent(viewContent.concat({...inputContent}))}}>입력</button> */
         onClick={submitContent}>입력</button>
       </div>
     );
